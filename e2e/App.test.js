@@ -10,6 +10,6 @@ test('App.js is running', async () => {
 describe('saying hello', () => {
   test('name is empty', async () => {
     const name = await page.textContent('input#name')
-    expect(name).equals('')
+    expect(name).toBe('')
   })
 })
