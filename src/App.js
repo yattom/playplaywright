@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class SayHello extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       greeting: '',
@@ -11,20 +11,24 @@ class SayHello extends React.Component {
   }
 
   setName(e) {
-    this.setState({name: e.target.value})
+    this.setState({ name: e.target.value })
   }
 
   sayHello() {
-    this.setState({greeting: 'Hi, ' + this.state.name + '!'});
+    if (this.state.name === undefined || this.state.name === '') {
+      this.setState({ greeting: '' });
+    } else {
+      this.setState({ greeting: 'Hi, ' + this.state.name + '!' });
+    }
   }
 
   render() {
     return <div>
       <h1>Name</h1>
       <input name="name" id="name"
-        onChange={(e) => { this.setName(e) }}/><br />
+        onChange={(e) => { this.setName(e) }} /><br />
       <button id="say_hello"
-        onClick={() => {this.sayHello()}} >Greet</button>
+        onClick={() => { this.sayHello() }} >Greet</button>
       <div id="greeting">{this.state.greeting}</div>
     </div>
   }
